@@ -17,20 +17,18 @@ public class RootLayoutController extends BorderPane {
   private DisplayController displayController;
 
   public RootLayoutController(MainController mainController) {
-    initMainController(mainController);
-    initDisplayController();
     FXMLLoader fxmlLoader = new FXMLLoader();
     fxmlLoader.setLocation(main.MainApp.class.getResource(PATH_TO_ROOT_LAYOUT));
     fxmlLoader.setRoot(this);
     fxmlLoader.setController(this);
-    
+
     try {
       fxmlLoader.load();
-      
+
     } catch (Exception e) {
       e.printStackTrace();
     }
-    
+
     initMainController(mainController);
     initDisplayController();
   }
@@ -38,10 +36,15 @@ public class RootLayoutController extends BorderPane {
   private void initDisplayController() {
     this.displayController = DisplayController.getInstance();
     this.setCenter(displayController);
-    
+
   }
 
   private void initMainController(MainController mainController) {
+    //assert mainController != null;
+    mainController = MainController.getInstance();
+    if(mainController == null) {
+      System.out.println("NULL");
+    }
     this.mainController = mainController;
   }
 
@@ -59,6 +62,10 @@ public class RootLayoutController extends BorderPane {
 
   private void executeCommandUserEntered() {
     String userInput = inputBox.getText();
-    mainController.executeCommand(userInput);
+    try {
+      mainController.executeCommand(userInput);
+    } catch (NullPointerException e) {
+      System.out.println("oops");
+    }
   }
 }
