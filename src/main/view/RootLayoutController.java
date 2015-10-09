@@ -22,20 +22,28 @@ public class RootLayoutController extends BorderPane {
     initDisplayController();
     FXMLLoader fxmlLoader = new FXMLLoader();
     fxmlLoader.setLocation(main.MainApp.class.getResource(PATH_TO_ROOT_LAYOUT));
+    fxmlLoader.setRoot(this);
+    fxmlLoader.setController(this);
+    
     try {
-      BorderPane afficher = (BorderPane) fxmlLoader.load();
+      fxmlLoader.load();
+      
     } catch (Exception e) {
       e.printStackTrace();
     }
+    
+    initMainController(mainController);
+    initDisplayController();
   }
 
   private void initDisplayController() {
-    this.displayController = new DisplayController();
+    this.displayController = DisplayController.getInstance();
+    this.setCenter(displayController);
     
   }
 
   private void initMainController(MainController mainController) {
-    this.mainController = new MainController();
+    this.mainController = mainController;
   }
 
   @FXML
