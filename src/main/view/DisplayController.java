@@ -12,31 +12,34 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class DisplayController extends VBox {
-	@FXML
-	private ListView<HBox> listView;
-	
-	@FXML
-	private Label displayToUser;
-	
-	private static DisplayController displayController;
-	private static final String PATH_TO_AFFICHER_FXML = "Afficher.fxml";
-	
-	private DisplayController() {
-	  FXMLLoader fxmlLoader = new FXMLLoader();
-	  fxmlLoader.setLocation(main.MainApp.class.getResource(PATH_TO_AFFICHER_FXML));
-	  try {
-	    fxmlLoader.load();
-	  } catch(Exception e) {
-	    e.printStackTrace();
-	  }
-	}
-	
-	public static DisplayController getInstance() {
-	  if(displayController == null) {
-	    displayController = new DisplayController();
-	  }
-	  return displayController;
-	}
-	
-	
+  @FXML
+  private ListView<HBox> listView;
+
+  @FXML
+  private Label displayToUser;
+
+  private static DisplayController displayController;
+  private static final String PATH_TO_AFFICHER_FXML = "view/Afficher.fxml";
+
+  private DisplayController() {
+    FXMLLoader fxmlLoader = new FXMLLoader();
+    fxmlLoader.setLocation(main.MainApp.class.getResource(PATH_TO_AFFICHER_FXML));
+    //fxmlLoader.setRoot(this);
+    fxmlLoader.setController(this);
+
+    try {
+      fxmlLoader.load();
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static DisplayController getInstance() {
+    if(displayController == null) {
+      displayController = new DisplayController();
+    }
+    return displayController;
+  }
+
+
 }

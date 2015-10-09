@@ -1,9 +1,8 @@
 package main.view;
 
-import java.awt.TextField;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -13,7 +12,7 @@ public class RootLayoutController extends BorderPane {
   @FXML
   private TextField inputBox;
 
-  private String PATH_TO_ROOT_LAYOUT = "RootLayout.fxml";
+  private String PATH_TO_ROOT_LAYOUT = "view/RootLayout.fxml";
   private MainController mainController;
   private DisplayController displayController;
 

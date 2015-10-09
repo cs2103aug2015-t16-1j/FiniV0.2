@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40">
+<fx:root type="BorderPane" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40">
    <bottom>
-      <TextField fx:id="inputBox" onKeyPressed="#handleKeyPress" BorderPane.alignment="CENTER" />
+      <TextField fx:id="inputBox" onKeyPressed="#handleKeyPress" prefHeight="30.0" BorderPane.alignment="CENTER" />
    </bottom>
-</BorderPane>
+</fx:root>
