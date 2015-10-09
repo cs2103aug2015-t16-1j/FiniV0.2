@@ -1,5 +1,6 @@
 package main;
 
+import javafx.print.Printer;
 import main.model.CreateTask;
 
 public class MainController {
@@ -44,15 +45,20 @@ public class MainController {
       case SAVE:
         displayToUser = saveFile(userInput);*/
       default:
-        invalidCommand();
+        displayToUser = invalidCommand();
         break;
     }
+    printer(displayToUser);
     
   }
 
-  private String invalidCommand(String userInput) {
+  private void printer(String displayToUser) {
+    System.out.println(displayToUser);
     
-    
+  }
+
+  private String invalidCommand() {
+    return "You have entered an invalid command.";
   }
 
   private String getTaskDetails(String userInput) {
@@ -68,6 +74,7 @@ public class MainController {
     }
     int indexOfTaskParameters = getIndexOfTaskParameters(taskDetails);
     String taskTitle = getTaskTitle(taskDetails, indexOfTaskParameters);
+    return taskTitle + " has been added.";
   }
 
   private int getIndexOfTaskParameters(String taskDetails) {
