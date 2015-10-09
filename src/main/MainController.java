@@ -1,6 +1,5 @@
 package main;
 
-import javafx.print.Printer;
 import main.model.CreateTask;
 
 public class MainController {
@@ -63,17 +62,29 @@ public class MainController {
 
   private String getTaskDetails(String userInput) {
     int indexOfFirstSpace = userInput.indexOf(" ");
-    return userInput.substring(indexOfFirstSpace);
+    if(indexOfFirstSpace > 0) {
+      return userInput.substring(indexOfFirstSpace);
+    } else {
+      return Integer.toString(indexOfFirstSpace);
+    }
   }
 
   private String addTask(String userInput) {
+    String taskTitle = "";
     String taskDetails = getTaskDetails(userInput);
+    
     // check if input is empty
-    if(taskDetails == "") {
+    if(taskDetails.equals("-1")) {
       return "No task details given.";
     }
+    
     int indexOfTaskParameters = getIndexOfTaskParameters(taskDetails);
-    String taskTitle = getTaskTitle(taskDetails, indexOfTaskParameters);
+    
+    if(indexOfTaskParameters > 0) {
+     taskTitle = getTaskTitle(taskDetails, indexOfTaskParameters);
+    } else {
+      taskTitle = taskDetails;
+    }
     return taskTitle + " has been added.";
   }
 
