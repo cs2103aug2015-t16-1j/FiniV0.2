@@ -1,8 +1,11 @@
 package main;
 
+import main.model.CreateTask;
+
 public class MainController {
 	private static MainController mainController;
 	private String displayToUser = "";
+	private CreateTask taskCreator;
 	
 	enum Command {
 	  ADD, DELETE, UPDATE, COMPLETE, UNDO, SAVE, INVALID;
@@ -10,6 +13,7 @@ public class MainController {
 	
 	public MainController() {
 		// INIT all other stuff
+	  taskCreator = CreateTask.getInstance();
 	}
 	
 	public static MainController getInstance() {
@@ -23,8 +27,22 @@ public class MainController {
     Command userCommand = getCommand(userInput);
     switch (userCommand) {
       case ADD:
-        addTask();
+        displayToUser = addTask(userInput);
         break;
+      /*case UPDATE:
+        displayToUser = updateTask(userInput);
+        break;
+      case DELETE:
+        displayToUser = deleteTask(userInput);
+        break;
+      case COMPLETE:
+        displayToUser = completeTask(userInput);
+        break;
+      case UNDO:
+        displayToUser = undoCommand(userInput);
+        break;
+      case SAVE:
+        displayToUser = saveFile(userInput);*/
       default:
         invalidCommand();
         break;
@@ -32,14 +50,32 @@ public class MainController {
     
   }
 
-  private void invalidCommand() {
-    System.out.println("Invalid");
+  private String invalidCommand(String userInput) {
+    
     
   }
 
-  private void addTask() {
-    System.out.println("Trying to add a task");
-    
+  private String getTaskDetails(String userInput) {
+    int indexOfFirstSpace = userInput.indexOf(" ");
+    return userInput.substring(indexOfFirstSpace);
+  }
+
+  private String addTask(String userInput) {
+    String taskDetails = getTaskDetails(userInput);
+    // check if input is empty
+    if(taskDetails == "") {
+      return "No task details given.";
+    }
+    int indexOfTaskParameters = getIndexOfTaskParameters(taskDetails);
+    String taskTitle = getTaskTitle(taskDetails, indexOfTaskParameters);
+  }
+
+  private int getIndexOfTaskParameters(String taskDetails) {
+    return taskDetails.indexOf("//");
+  }
+
+  private String getTaskTitle(String taskDetails, int indexOfTaskParameters) {
+    return taskDetails.substring(0, indexOfTaskParameters);
   }
 
   private Command getCommand(String userInput) {
