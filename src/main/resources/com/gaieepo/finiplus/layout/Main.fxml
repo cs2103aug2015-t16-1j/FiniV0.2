@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gaieepo.finiplus.controllers.MainController">
+   <children>
+      <SplitPane dividerPositions="0.841025641025641" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+            <SplitPane dividerPositions="0.3" prefHeight="160.0" prefWidth="200.0">
+               <items>
+                  <fx:include fx:id="groupList" source="GroupList.fxml" />
+                  <fx:include fx:id="taskList" source="TaskList.fxml" />
+               </items>
+            </SplitPane>
+            <fx:include fx:id="command" source="Command.fxml" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

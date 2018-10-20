@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+
+<fx:root type="HBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Circle fx:id="type" fill="#1f93ff" radius="5.0" stroke="BLACK" strokeType="INSIDE">
+         <HBox.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </HBox.margin>
+      </Circle>
+      <Label fx:id="description" text="Label" />
+   </children>
+</fx:root>
